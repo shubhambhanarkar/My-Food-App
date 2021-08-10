@@ -7,6 +7,8 @@ import CartIcon from "./Cart/CartIcon";
 
 import CartContext from "../store/cart-context";
 
+import { Card, Button } from "reactstrap";
+
 const MenuList = (props) => {
   const history = useHistory();
   const authCtx = useContext(AuthContext);
@@ -21,15 +23,48 @@ const MenuList = (props) => {
   };
   return (
     <div>
-      <div style={{textAlign: "center"}}>
+      <div style={{ textAlign: "center" }}>
         <h1>S&#8523;M</h1>
-        <button onClick={logoutHandler}>Logout</button>
-        <button type="button" onClick={props.onShow}>
+        <Button
+          type="button"
+          onClick={props.onShow}
+          style={{
+            backgroundColor: "#720D72",
+            height: "100%",
+          }}
+        >
           <CartIcon />
-          <span>{numberOfCartItems}</span>
-        </button>
+          <span style={{ fontWeight: "bold", fontSize: "1.25rem" }}>
+            {numberOfCartItems}
+          </span>
+        </Button>
+          <Button
+            onClick={logoutHandler}
+            style={{
+              backgroundColor: "#720D72",
+              textAlign: "center",
+              width: "7rem",
+              height: "2.5rem",
+              fontWeight: "bold",
+              borderRadius: "1.5rem",
+              float: "right",
+            }}
+          >
+            Logout
+          </Button>
       </div>
-      <MenuItems />
+      <div style={{ padding: "2rem" }}>
+        <Card
+          style={{
+            borderRadius: "1rem",
+            padding: "2rem",
+            boxShadow: "0.2rem 0.2rem #888888",
+            borderWidth: "0.15rem",
+          }}
+        >
+          <MenuItems />
+        </Card>
+      </div>
     </div>
   );
 };

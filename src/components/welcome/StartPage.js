@@ -1,8 +1,10 @@
 import { useState } from "react";
-import Signup from "./UserInfo/Signup";
 
+import Signup from "./UserInfo/Signup";
 import LoginForm from "./UserInfo/LoginForm";
 import MenuItems from "../menu/MenuItems";
+
+import { Button, Card } from "reactstrap";
 
 const StartPage = () => {
   const [showSignup, setShowSignup] = useState(false);
@@ -23,14 +25,54 @@ const StartPage = () => {
 
   return (
     <div>
-      <div style={{textAlign: "center"}}>
-        <h1>S&#8523;M</h1>
-        <button onClick={showLoginHandler}>Login</button>
-        <button onClick={showSignupHandler}>Signup</button>
+      <h1 style={{ textAlign: "center" }}>S&#8523;M</h1>
+      <div style={{ textAlign: "center" }}>
+        <Button
+          onClick={showLoginHandler}
+          style={{
+            textAlign: "center",
+            width: "7rem",
+            height: "2.5rem",
+            fontWeight: "bold",
+            backgroundColor: "#720D72",
+            borderRadius: "1.5rem",
+          }}
+        >
+          Login
+        </Button>
+        {"  "}
+        <Button
+          onClick={showSignupHandler}
+          style={{
+            textAlign: "center",
+            width: "7rem",
+            height: "2.5rem",
+            fontWeight: "bold",
+            backgroundColor: "#720D72",
+            borderRadius: "1.5rem",
+          }}
+        >
+          Signup
+        </Button>
       </div>
-      {showLogin && <LoginForm onClose={hideLoginHandler} />}
-      {showSignup && <Signup onClose={hideSignupHandler} />}
-        <MenuItems onShowLogin={showLoginHandler} />
+      {showLogin && (
+        <LoginForm onShow={showLogin} onClose={hideLoginHandler} />
+      )}
+      {showSignup && (
+        <Signup onShow={showSignup} onClose={hideSignupHandler} />
+      )}
+      <div style={{ padding: "2rem" }}>
+        <Card
+          style={{
+            borderRadius: "1rem",
+            padding: "2rem",
+            boxShadow: "0.2rem 0.2rem #888888",
+            borderWidth: "0.15rem",
+          }}
+        >
+          <MenuItems onShowLogin={showLoginHandler} />
+        </Card>
+      </div>
     </div>
   );
 };

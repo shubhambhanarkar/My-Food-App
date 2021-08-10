@@ -1,6 +1,8 @@
-import { Fragment, useContext } from "react";
+import { useContext } from "react";
 import CartItems from "./CartItems";
 import CartContext from "../../store/cart-context";
+
+import { Modal, ModalBody, Button } from "reactstrap";
 
 const CartList = (props) => {
   const cartCtx = useContext(CartContext);
@@ -22,23 +24,35 @@ const CartList = (props) => {
   };
 
   return (
-    <Fragment>
-      <CartItems />
-      <div>
-        <span>Total Price</span>
-        <span>&#8377; {totalPrice}</span>
-      </div>
-      <div>
-        <button onClick={props.onHide}>
-          Close
-        </button>
-        {hasItems && (
-          <button onClick={orderHandler}>
-            Order
-          </button>
-        )}
-      </div>
-    </Fragment>
+    <Modal isOpen={props.onShow} centered={true} backdrop="static">
+      <ModalBody>
+        <CartItems />
+        <div
+          style={{
+            fontWeight: "bolder",
+            display: "flex",
+            justifyContent: "space-between",
+            fontSize: "1.5rem",
+          }}
+        >
+          <span>Total Price</span>
+          <span>&#8377; {totalPrice}</span>
+        </div>
+        <div style={{ textAlign: "end" }}>
+          <Button onClick={props.onHide} style={{ backgroundColor: "#720D72" }}>
+            Close
+          </Button>{" "}
+          {hasItems && (
+            <Button
+              onClick={orderHandler}
+              style={{ backgroundColor: "#720D72" }}
+            >
+              Order
+            </Button>
+          )}
+        </div>
+      </ModalBody>
+    </Modal>
   );
 };
 

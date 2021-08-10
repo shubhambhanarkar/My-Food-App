@@ -2,6 +2,17 @@ import { useContext, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from "reactstrap";
+
 const LoginForm = (props) => {
   const history = useHistory();
 
@@ -66,34 +77,57 @@ const LoginForm = (props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={loginHandler}>
-        <div>
-          <span onClick={props.onClose}>&times;</span>
-        </div>
-        <div>
-          <label htmlFor="email" />
-          <input
-            id="email"
-            type="text"
-            placeholder="Email/Username"
-            ref={emailRef}
-          />
-        </div>
-        <div>
-          <label htmlFor="password" />
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            ref={passwordRef}
-          />
-        </div>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    </div>
+    <Modal isOpen={props.onShow}>
+      <ModalHeader>Login Form</ModalHeader>
+      <ModalBody>
+        <Form onSubmit={loginHandler}>
+          <FormGroup>
+            <Label htmlFor="email" />
+            <Input
+              id="email"
+              type="text"
+              placeholder="Email/Username"
+              innerRef={emailRef}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="password" />
+            <Input
+              id="password"
+              type="password"
+              placeholder="Password"
+              innerRef={passwordRef}
+            />
+          </FormGroup>
+          <FormGroup
+            style={{
+              textAlign: "center",
+              paddingTop: "1rem",
+              display: "flex",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <Button
+              style={{
+                width: "8rem",
+                fontWeight: "bold",
+                backgroundColor: "#720D72",
+              }}
+              type="submit"
+            >
+              Login
+            </Button>
+            <Button
+              style={{ width: "6rem", fontWeight: "bold" }}
+              type="button"
+              onClick={props.onClose}
+            >
+              Close
+            </Button>
+          </FormGroup>
+        </Form>
+      </ModalBody>
+    </Modal>
   );
 };
 

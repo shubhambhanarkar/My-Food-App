@@ -1,13 +1,20 @@
 import { useRef, useState } from "react";
 
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from "reactstrap";
+
 const Signup = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [validInput, setValidInput] = useState(false);
-
-  const closeIconHandler = () => {
-    props.onClose();
-  };
 
   const submitSignupHandler = (event) => {
     event.preventDefault();
@@ -58,33 +65,57 @@ const Signup = (props) => {
     }
   };
   return (
-    <form onSubmit={submitSignupHandler}>
-      <div>
-        <span onClick={closeIconHandler}>&times;</span>
-      </div>
-      <div>
-        <label htmlFor="email" />
-        <input
-          id="email"
-          type="email"
-          placeholder="Email Address"
-          ref={emailRef}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="password" />
-        <input
-          id="password"
-          type="text"
-          placeholder="New Password"
-          ref={passwordRef}
-        />
-      </div>
-      <div>
-        <button type="submit">SignUp</button>
-      </div>
-    </form>
+    <Modal isOpen={props.onShow}>
+      <ModalHeader>SignUp Form</ModalHeader>
+      <ModalBody>
+        <Form onSubmit={submitSignupHandler}>
+          <FormGroup>
+            <Label htmlFor="email" />
+            <Input
+              id="email"
+              type="email"
+              placeholder="Email Address"
+              innerRef={emailRef}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="password" />
+            <Input
+              id="password"
+              type="text"
+              placeholder="New Password"
+              innerRef={passwordRef}
+            />
+          </FormGroup>
+          <FormGroup
+            style={{
+              textAlign: "center",
+              paddingTop: "1rem",
+              display: "flex",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <Button
+              style={{
+                width: "8rem",
+                fontWeight: "bold",
+                backgroundColor: "#720D72",
+              }}
+              type="submit"
+            >
+              SignUp
+            </Button>
+            <Button
+              style={{ width: "6rem", fontWeight: "bold" }}
+              type="button"
+              onClick={props.onClose}
+            >
+              Close
+            </Button>
+          </FormGroup>
+        </Form>
+      </ModalBody>
+    </Modal>
   );
 };
 

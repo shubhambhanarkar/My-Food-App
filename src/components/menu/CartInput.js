@@ -32,15 +32,29 @@ const CartInput = (props) => {
   return (
     <div>
       <form onSubmit={onAddItemHandler}>
-        <label htmlFor={props.id}>Amount</label>
+        <label htmlFor={props.id} style={{ fontWeight: "bold" }}>
+          Amount
+        </label>{" "}
         <input
           id={props.id}
           type="number"
           min="1"
           max="3"
           defaultValue="1"
-          ref={inputRef} />
-        <button>+ Add</button>
+          ref={inputRef}
+          style={{width: "2.5rem"}}
+        />{" "}
+        <button
+          style={{
+            backgroundColor: "#720D72",
+            borderRadius: "1.5rem",
+            color: "white",
+            fontWeight: "bolder",
+            padding: "0.25rem 1.5rem",
+          }}
+        >
+          + Add
+        </button>
         {!amountIsValid && <p>Please enter valid amount (1 - 3)</p>}
       </form>
     </div>

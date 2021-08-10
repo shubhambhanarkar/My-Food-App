@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import CartInput from "./CartInput";
 
+import { Spinner } from "reactstrap";
+
 const MenuItems = (props) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -40,16 +42,17 @@ const MenuItems = (props) => {
 
   const itemsList = items.map((item) => {
     return (
-      <li
-        key={item.id}
-        style={{ listStyle: "none" }}
-      >
-        <div>
-          <h3>{item.name}</h3>
-          <p>&#8377; {item.price}</p>
+      <li key={item.id} style={{ listStyle: "none" }}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <h4>{item.name}</h4>
+          <p style={{ fontWeight: "bold", color: "#720D72", fontSize: "1.5rem" }}>
+            &#8377; {item.price}
+          </p>
         </div>
-        <div>
-          <p>{item.description}</p>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <p style={{ fontWeight: "bold", color: "#720D72" }}>
+            {item.description}
+          </p>
           <CartInput
             id={item.id}
             name={item.name}
@@ -57,13 +60,18 @@ const MenuItems = (props) => {
             onShowLogin={showLoginOnAdd}
           />
         </div>
+        <hr size="3" width="100%" />
       </li>
     );
   });
 
   return (
-    <ul>
-      {loading && <h2 style={{ textAlign: "center" }}>Loading...</h2>}
+    <ul style={{ padding: "0%" }}>
+      {loading && (
+        <div style={{ textAlign: "center" }}>
+          <Spinner color="primary" style={{ width: "3rem", height: "3rem" }} />
+        </div>
+      )}
       {!loading && itemsList}
     </ul>
   );
