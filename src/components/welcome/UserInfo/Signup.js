@@ -1,8 +1,5 @@
 import { useRef, useState } from "react";
 
-import Modal from "../../UI/Modal";
-import classes from "./Signup.module.css";
-
 const Signup = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -61,35 +58,33 @@ const Signup = (props) => {
     }
   };
   return (
-    <Modal onCloseSignup={props.onClose}>
-      <form className={classes.completeForm} onSubmit={submitSignupHandler}>
-        <div>
-          <span onClick={closeIconHandler}>&times;</span>
-        </div>
-        <div>
-          <label htmlFor="email" />
-          <input
-            id="email"
-            type="email"
-            placeholder="Email Address"
-            ref={emailRef}
-          />
-        </div>
+    <form onSubmit={submitSignupHandler}>
+      <div>
+        <span onClick={closeIconHandler}>&times;</span>
+      </div>
+      <div>
+        <label htmlFor="email" />
+        <input
+          id="email"
+          type="email"
+          placeholder="Email Address"
+          ref={emailRef}
+        />
+      </div>
 
-        <div>
-          <label htmlFor="password" />
-          <input
-            id="password"
-            type="text"
-            placeholder="New Password"
-            ref={passwordRef}
-          />
-        </div>
-        <div>
-          <button type="submit">SignUp</button>
-        </div>
-      </form>
-    </Modal>
+      <div>
+        <label htmlFor="password" />
+        <input
+          id="password"
+          type="text"
+          placeholder="New Password"
+          ref={passwordRef}
+        />
+      </div>
+      <div>
+        <button type="submit">SignUp</button>
+      </div>
+    </form>
   );
 };
 

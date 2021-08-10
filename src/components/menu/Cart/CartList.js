@@ -1,9 +1,6 @@
-import { useContext } from "react";
-import Modal from "../../UI/Modal";
+import { Fragment, useContext } from "react";
 import CartItems from "./CartItems";
 import CartContext from "../../store/cart-context";
-
-import classes from "./CartList.module.css";
 
 const CartList = (props) => {
   const cartCtx = useContext(CartContext);
@@ -21,27 +18,27 @@ const CartList = (props) => {
       }
     );
     props.onHide();
-    alert('Your Order has been placed successfully!')
+    alert("Your Order has been placed successfully!");
   };
 
   return (
-    <Modal onCloseCart={props.onHide}>
+    <Fragment>
       <CartItems />
-      <div className={classes.total}>
+      <div>
         <span>Total Price</span>
         <span>&#8377; {totalPrice}</span>
       </div>
-      <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={props.onHide}>
+      <div>
+        <button onClick={props.onHide}>
           Close
         </button>
         {hasItems && (
-          <button className={classes.button} onClick={orderHandler}>
+          <button onClick={orderHandler}>
             Order
           </button>
         )}
       </div>
-    </Modal>
+    </Fragment>
   );
 };
 

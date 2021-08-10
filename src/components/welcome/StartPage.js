@@ -2,9 +2,7 @@ import { useState } from "react";
 import Signup from "./UserInfo/Signup";
 
 import LoginForm from "./UserInfo/LoginForm";
-import classes from "./StartPage.module.css";
 import MenuItems from "../menu/MenuItems";
-import Card from "../UI/Card";
 
 const StartPage = () => {
   const [showSignup, setShowSignup] = useState(false);
@@ -24,23 +22,15 @@ const StartPage = () => {
   };
 
   return (
-    <div className={classes.page}>
-      {showSignup && <Signup onClose={hideSignupHandler} />}
-      <div className={classes.heading}>
+    <div>
+      <div style={{textAlign: "center"}}>
         <h1>S&#8523;M</h1>
         <button onClick={showLoginHandler}>Login</button>
         <button onClick={showSignupHandler}>Signup</button>
       </div>
-      {showLogin && (
-        <div className={classes.form}>
-          <LoginForm onClose={hideLoginHandler} />
-        </div>
-      )}
-      <div className={classes.menu}>
-        <Card>
-          <MenuItems onShowLogin={showLoginHandler} />
-        </Card>
-      </div>
+      {showLogin && <LoginForm onClose={hideLoginHandler} />}
+      {showSignup && <Signup onClose={hideSignupHandler} />}
+        <MenuItems onShowLogin={showLoginHandler} />
     </div>
   );
 };

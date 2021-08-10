@@ -1,9 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Modal from "../../UI/Modal";
 import AuthContext from "../../store/auth-context";
-
-import classes from "./LoginForm.module.css";
 
 const LoginForm = (props) => {
   const history = useHistory();
@@ -69,36 +66,34 @@ const LoginForm = (props) => {
   };
 
   return (
-    <Modal onCloseLogin={props.onClose}>
-      <div className={classes.completeForm}>
-        <form onSubmit={loginHandler}>
-          <div>
-            <span onClick={props.onClose}>&times;</span>
-          </div>
-          <div className={classes.inputs}>
-            <label htmlFor="email" />
-            <input
-              id="email"
-              type="text"
-              placeholder="Email/Username"
-              ref={emailRef}
-            />
-          </div>
-          <div className={classes.inputs}>
-            <label htmlFor="password" />
-            <input
-              id="password"
-              type="password"
-              placeholder="Password"
-              ref={passwordRef}
-            />
-          </div>
-          <div className={classes.actions}>
-            <button type="submit">Login</button>
-          </div>
-        </form>
-      </div>
-    </Modal>
+    <div>
+      <form onSubmit={loginHandler}>
+        <div>
+          <span onClick={props.onClose}>&times;</span>
+        </div>
+        <div>
+          <label htmlFor="email" />
+          <input
+            id="email"
+            type="text"
+            placeholder="Email/Username"
+            ref={emailRef}
+          />
+        </div>
+        <div>
+          <label htmlFor="password" />
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            ref={passwordRef}
+          />
+        </div>
+        <div>
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

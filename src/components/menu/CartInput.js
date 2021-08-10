@@ -1,7 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import AuthContext from "../store/auth-context";
 import CartContext from "../store/cart-context";
-import classes from "./CartInput.module.css";
 
 const CartInput = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
@@ -31,7 +30,7 @@ const CartInput = (props) => {
     }
   };
   return (
-    <div className={classes.formItem}>
+    <div>
       <form onSubmit={onAddItemHandler}>
         <label htmlFor={props.id}>Amount</label>
         <input

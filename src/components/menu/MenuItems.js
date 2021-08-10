@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import CartInput from "./CartInput";
-import classes from "./MenuItems.module.css";
 
 const MenuItems = (props) => {
   const [items, setItems] = useState([]);
@@ -43,14 +42,13 @@ const MenuItems = (props) => {
     return (
       <li
         key={item.id}
-        className={classes.listItem}
         style={{ listStyle: "none" }}
       >
-        <div className={classes.topInfo}>
+        <div>
           <h3>{item.name}</h3>
-          <p className={classes.price}>&#8377; {item.price}</p>
+          <p>&#8377; {item.price}</p>
         </div>
-        <div className={classes.bottomInfo}>
+        <div>
           <p>{item.description}</p>
           <CartInput
             id={item.id}

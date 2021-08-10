@@ -2,11 +2,9 @@ import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../store/auth-context";
 
-import Card from "../UI/Card";
 import MenuItems from "./MenuItems";
 import CartIcon from "./Cart/CartIcon";
 
-import classes from "./MenuList.module.css";
 import CartContext from "../store/cart-context";
 
 const MenuList = (props) => {
@@ -22,28 +20,16 @@ const MenuList = (props) => {
     history.replace("/");
   };
   return (
-    <div className={classes.bg}>
-      <div className={classes.heading}>
-        <h1>
-          S&#8523;M
-          <button className={classes.logout} onClick={logoutHandler}>
-            Logout
-          </button>
-        </h1>
-        <button
-          type="button"
-          className={classes.cartButton}
-          onClick={props.onShow}
-        >
+    <div>
+      <div style={{textAlign: "center"}}>
+        <h1>S&#8523;M</h1>
+        <button onClick={logoutHandler}>Logout</button>
+        <button type="button" onClick={props.onShow}>
           <CartIcon />
-          <span className={classes.badge}>{numberOfCartItems}</span>
+          <span>{numberOfCartItems}</span>
         </button>
       </div>
-      <Card>
-        <ul className={classes.unList}>
-          <MenuItems />
-        </ul>
-      </Card>
+      <MenuItems />
     </div>
   );
 };
