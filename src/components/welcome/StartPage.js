@@ -3,7 +3,7 @@ import Signup from "./UserInfo/Signup";
 
 import LoginForm from "./UserInfo/LoginForm";
 import classes from "./StartPage.module.css";
-import MenuItems from "../Menu/MenuItems";
+import MenuItems from "../menu/MenuItems";
 import Card from "../UI/Card";
 
 const StartPage = () => {

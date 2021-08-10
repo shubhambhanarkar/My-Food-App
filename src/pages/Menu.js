@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import CartList from "../components/Menu/Cart/CartList";
-import MenuList from "../components/Menu/MenuList";
+import CartList from "../components/menu/Cart/CartList";
+import MenuList from "../components/menu/MenuList";
 
 const Menu = () => {
   const [showCart, setShowCart] = useState(false);
