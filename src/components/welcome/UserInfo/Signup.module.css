@@ -1,0 +1,41 @@
+.completeForm {
+  height: auto;
+  width: auto;
+  align-items: center;
+}
+
+.completeForm span {
+  float: right;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: bolder;
+}
+.completeForm span:hover {
+  color: rgb(114, 13, 114);
+}
+
+.completeForm input {
+  height: 30px;
+  width: stretch;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border-width: 1px;
+  text-align: center;
+}
+
+.completeForm button {
+  height: 40px;
+  width: 70%;
+  background-color: rgb(114, 13, 114);
+  border: 1px solid rgb(114, 13, 114);
+  border-radius: 4px;
+  margin-left: 15%;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.completeForm button:hover {
+  background-color: rgb(66, 7, 66);
+}
