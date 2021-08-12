@@ -59,7 +59,7 @@ const MenuList = (props) => {
           style={{
             borderRadius: "1rem",
             padding: "2rem",
-            boxShadow: "0.2rem 0.2rem #888888",
+            boxShadow: "0.2rem 0.2rem #000000",
             borderWidth: "0.15rem",
           }}
         >
