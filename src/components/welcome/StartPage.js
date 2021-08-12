@@ -68,6 +68,7 @@ const StartPage = () => {
             padding: "2rem",
             boxShadow: "0.2rem 0.2rem #888888",
             borderWidth: "0.15rem",
+            opacity: "0.9"
           }}
         >
           <MenuItems onShowLogin={showLoginHandler} />
