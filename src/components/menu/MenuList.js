@@ -24,13 +24,14 @@ const MenuList = (props) => {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <h1>S&#8523;M</h1>
+        <h1 style={{ color: "white" }}>S&#8523;M</h1>
         <Button
           type="button"
           onClick={props.onShow}
           style={{
             backgroundColor: "#720D72",
-            height: "100%",
+            position: "relative",
+            left: "4%"
           }}
         >
           <CartIcon />
@@ -38,20 +39,20 @@ const MenuList = (props) => {
             {numberOfCartItems}
           </span>
         </Button>
-          <Button
-            onClick={logoutHandler}
-            style={{
-              backgroundColor: "#720D72",
-              textAlign: "center",
-              width: "7rem",
-              height: "2.5rem",
-              fontWeight: "bold",
-              borderRadius: "1.5rem",
-              float: "right",
-            }}
-          >
-            Logout
-          </Button>
+        <Button
+          onClick={logoutHandler}
+          style={{
+            backgroundColor: "#720D72",
+            textAlign: "center",
+            width: "7rem",
+            height: "2.5rem",
+            fontWeight: "bold",
+            borderRadius: "1.5rem",
+            float: "right",
+          }}
+        >
+          Logout
+        </Button>
       </div>
       <div style={{ padding: "2rem" }}>
         <Card

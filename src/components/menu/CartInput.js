@@ -2,6 +2,8 @@ import { useContext, useRef, useState } from "react";
 import AuthContext from "../store/auth-context";
 import CartContext from "../store/cart-context";
 
+import { Button } from "reactstrap";
+
 const CartInput = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const inputRef = useRef();
@@ -44,7 +46,7 @@ const CartInput = (props) => {
           ref={inputRef}
           style={{width: "2.5rem"}}
         />{" "}
-        <button
+        <Button
           style={{
             backgroundColor: "#720D72",
             borderRadius: "1.5rem",
@@ -54,7 +56,7 @@ const CartInput = (props) => {
           }}
         >
           + Add
-        </button>
+        </Button>
         {!amountIsValid && <p>Please enter valid amount (1 - 3)</p>}
       </form>
     </div>

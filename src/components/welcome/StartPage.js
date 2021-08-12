@@ -25,7 +25,7 @@ const StartPage = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>S&#8523;M</h1>
+      <h1 style={{ textAlign: "center", color: "white" }}>S&#8523;M</h1>
       <div style={{ textAlign: "center" }}>
         <Button
           onClick={showLoginHandler}
