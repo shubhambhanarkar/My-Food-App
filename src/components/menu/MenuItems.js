@@ -43,7 +43,7 @@ const MenuItems = (props) => {
   const itemsList = items.map((item) => {
     return (
       <li key={item.id} style={{ listStyle: "none" }}>
-        <Row style={{ display: "flex", justifyContent: "space-between" }}>
+        <Row>
           <Col>
             <h4>{item.name}</h4>
           </Col>
@@ -59,7 +59,7 @@ const MenuItems = (props) => {
             </p>
           </Col>
         </Row>
-        <Row style={{ display: "flex", justifyContent: "space-between" }}>
+        <Row>
           <Col>
             <p style={{ fontWeight: "bold", color: "#720D72" }}>
               {item.description}
@@ -82,8 +82,10 @@ const MenuItems = (props) => {
   return (
     <Container style={{ padding: "0%" }}>
       {loading && (
-        <div style={{ textAlign: "center" }}>
-          <Spinner color="primary" style={{ width: "3rem", height: "3rem" }} />
+        <div style={{ textAlign: "center", display: "flex", justifyContent: "center" }}>
+          <Spinner color="primary" type="grow" style={{ width: "3rem", height: "3rem" }} />
+          <Spinner color="primary" type="grow" style={{ width: "3rem", height: "3rem" }} />
+          <Spinner color="primary" type="grow" style={{ width: "3rem", height: "3rem" }} />
         </div>
       )}
       {!loading && itemsList}
