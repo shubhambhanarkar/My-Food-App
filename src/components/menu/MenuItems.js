@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import CartInput from "./CartInput";
 
-import { Spinner } from "reactstrap";
+import { Col, Container, Row, Spinner } from "reactstrap";
 
 const MenuItems = (props) => {
   const [items, setItems] = useState([]);
@@ -43,37 +43,51 @@ const MenuItems = (props) => {
   const itemsList = items.map((item) => {
     return (
       <li key={item.id} style={{ listStyle: "none" }}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <h4>{item.name}</h4>
-          <p style={{ fontWeight: "bold", color: "#720D72", fontSize: "1.5rem" }}>
-            &#8377; {item.price}
-          </p>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <p style={{ fontWeight: "bold", color: "#720D72" }}>
-            {item.description}
-          </p>
-          <CartInput
-            id={item.id}
-            name={item.name}
-            price={item.price}
-            onShowLogin={showLoginOnAdd}
-          />
-        </div>
+        <Row style={{ display: "flex", justifyContent: "space-between" }}>
+          <Col>
+            <h4>{item.name}</h4>
+          </Col>
+          <Col style={{ textAlign: "end" }}>
+            <p
+              style={{
+                fontWeight: "bold",
+                color: "#720D72",
+                fontSize: "1.5rem",
+              }}
+            >
+              &#8377; {item.price}
+            </p>
+          </Col>
+        </Row>
+        <Row style={{ display: "flex", justifyContent: "space-between" }}>
+          <Col>
+            <p style={{ fontWeight: "bold", color: "#720D72" }}>
+              {item.description}
+            </p>
+          </Col>
+          <Col style={{ textAlign: "end" }}>
+            <CartInput
+              id={item.id}
+              name={item.name}
+              price={item.price}
+              onShowLogin={showLoginOnAdd}
+            />
+          </Col>
+        </Row>
         <hr size="3" width="100%" />
       </li>
     );
   });
 
   return (
-    <ul style={{ padding: "0%" }}>
+    <Container style={{ padding: "0%" }}>
       {loading && (
         <div style={{ textAlign: "center" }}>
           <Spinner color="primary" style={{ width: "3rem", height: "3rem" }} />
         </div>
       )}
       {!loading && itemsList}
-    </ul>
+    </Container>
   );
 };
 
