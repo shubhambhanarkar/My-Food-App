@@ -70,7 +70,7 @@ const MenuList = (props) => {
           </Button>
         </Col>
       </Row>
-      <Row style={{ padding: "2rem" }}>
+      <Row style={{ padding: "2rem 0rem" }}>
         <Col>
           <Card
             style={{
