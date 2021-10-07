@@ -32,7 +32,7 @@ const MenuItems = (props) => {
       setLoading(false);
     };
     fetchItems().catch((error) => {
-      throw new Error(error.mesage);
+      throw new Error(error.message);
     });
   }, []);
 
