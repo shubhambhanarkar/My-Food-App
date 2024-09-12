@@ -1,17 +1,25 @@
-import { useContext, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
-import Modal from "../../UI/Modal";
-import AuthContext from "../../store/auth-context";
+import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-import classes from "./LoginForm.module.css";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from "reactstrap";
+import { login } from "../../store/auth-store";
 
 const LoginForm = (props) => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const emailRef = useRef();
   const passwordRef = useRef();
-
-  const authCtx = useContext(AuthContext);
 
   const [validInputs, setValidInputs] = useState(true);
 
@@ -51,10 +59,7 @@ const LoginForm = (props) => {
           }
         })
         .then((data) => {
-          const expirationTime = new Date(
-            new Date().getTime() + +data.expiresIn * 1000
-          );
-          authCtx.login(data.idToken, expirationTime.toISOString());
+          dispatch(login(data.idToken));
           history.replace("/menu");
         })
         .catch((err) => {
@@ -69,35 +74,56 @@ const LoginForm = (props) => {
   };
 
   return (
-    <Modal onCloseLogin={props.onClose}>
-      <div className={classes.completeForm}>
-        <form onSubmit={loginHandler}>
-          <div>
-            <span onClick={props.onClose}>&times;</span>
-          </div>
-          <div className={classes.inputs}>
-            <label htmlFor="email" />
-            <input
+    <Modal isOpen={props.onShow}>
+      <ModalHeader>Login Form</ModalHeader>
+      <ModalBody>
+        <Form onSubmit={loginHandler}>
+          <FormGroup>
+            <Label htmlFor="email" />
+            <Input
               id="email"
               type="text"
               placeholder="Email/Username"
-              ref={emailRef}
+              innerRef={emailRef}
             />
-          </div>
-          <div className={classes.inputs}>
-            <label htmlFor="password" />
-            <input
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="password" />
+            <Input
               id="password"
               type="password"
               placeholder="Password"
-              ref={passwordRef}
+              innerRef={passwordRef}
             />
-          </div>
-          <div className={classes.actions}>
-            <button type="submit">Login</button>
-          </div>
-        </form>
-      </div>
+          </FormGroup>
+          <FormGroup
+            style={{
+              textAlign: "center",
+              paddingTop: "1rem",
+              display: "flex",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <Button
+              style={{
+                width: "8rem",
+                fontWeight: "bold",
+                backgroundColor: "#720D72",
+              }}
+              type="submit"
+            >
+              Login
+            </Button>
+            <Button
+              style={{ width: "6rem", fontWeight: "bold" }}
+              type="button"
+              onClick={props.onClose}
+            >
+              Close
+            </Button>
+          </FormGroup>
+        </Form>
+      </ModalBody>
     </Modal>
   );
 };

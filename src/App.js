@@ -1,26 +1,24 @@
 import { Redirect, Route, Switch } from "react-router-dom";
-
 import Welcome from "./pages/Welcome";
 import Menu from "./pages/Menu";
-import AuthContext from "./components/store/auth-context";
-import { Suspense, useContext } from "react";
-import CartContextProvider from "./components/store/CartProvider";
+import { Suspense } from "react";
+import { Provider, useSelector } from "react-redux";
+import { CartStore } from "./components/store/cart-store";
 
 function App() {
-  const authCtx = useContext(AuthContext);
+  const authValue = useSelector((state) => state.auth);
   return (
     <Suspense fallback={<h2 style={{ textAlign: "center" }}>Loading...</h2>}>
       <Switch>
         <Route path="/" exact>
           <Welcome />
         </Route>
-        <CartContextProvider>
+        <Provider store={CartStore}>
           <Route path="/menu">
-            {authCtx.isLoggedIn && <Menu />}
-            {!authCtx.isLoggedIn && <Redirect to="/" />}
+            {authValue.isLoggedIn && <Menu />}
+            {!authValue.isLoggedIn && <Redirect to="/" />}
           </Route>
-        </CartContextProvider>
-        )
+        </Provider>
       </Switch>
     </Suspense>
   );

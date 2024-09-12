@@ -2,13 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { AuthContextProvider } from "./components/store/auth-context";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+import { AuthStore } from "./components/store/auth-store";
 
-ReactDOM.render(
-  <AuthContextProvider>
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <Provider store={AuthStore}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </AuthContextProvider>,
-  document.getElementById("root")
+  </Provider>
 );
