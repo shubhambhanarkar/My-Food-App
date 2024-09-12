@@ -8,16 +8,40 @@ const defaultCartState = {
 
 const CartSlice = createSlice({
   name: "cart",
-  defaultCartState,
+  initialState: defaultCartState,
   reducers: {
-    addItem: (item) => {},
-    removeItem: (id) => {},
+    addItem: (state, item) => {
+      const existingItemIndex = state.items.findIndex(
+        (data) => data.id === item.id
+      );
+      const existingItem = state.items[existingItemIndex];
+      if (existingItem) {
+        state.items[existingItemIndex] = {
+          ...existingItem,
+          amount: existingItem.amount + 1,
+        };
+      } else {
+        state.items = [...state.items, item];
+      }
+    },
+    removeItem: (state, id) => {
+      const existingItemIndex = state.items.findIndex((data) => data.id === id);
+      const existingItem = state.items[existingItemIndex];
+      if (existingItem.amount > 1) {
+        state.items[existingItemIndex] = {
+          ...existingItem,
+          amount: existingItem.amount - 1,
+        };
+      } else {
+        state.items = state.items.filter((item) => item.id !== id);
+      }
+    },
   },
 });
 
 export const CartStore = configureStore({
   reducer: {
-    cart: CartSlice,
+    cart: CartSlice.reducer,
   },
 });
 

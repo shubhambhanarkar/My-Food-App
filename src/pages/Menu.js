@@ -14,7 +14,7 @@ const Menu = () => {
 
   return (
     <div>
-      {/* {showCart && <CartList onShow={showCart} onHide={hideCartHandler} />} */}
+      {showCart && <CartList onShow={showCart} onHide={hideCartHandler} />}
       <MenuList onShow={showCartHandler} />
     </div>
   );

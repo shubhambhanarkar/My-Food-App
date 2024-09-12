@@ -1,19 +1,27 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button } from "reactstrap";
+import { addItem } from "../store/cart-store";
 
 const CartInput = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const inputRef = useRef();
+  const dispatch = useDispatch();
   const onAddItemHandler = (event) => {
     event.preventDefault();
-
     const enteredAmount = inputRef.current.value;
     const amount = +enteredAmount;
-
     if (enteredAmount.trim().length === 0 || amount < 1 || amount > 3) {
       setAmountIsValid(false);
       return;
     }
+    const item = {
+      id: props.id,
+      name: props.name,
+      price: props.price,
+      amount: 1,
+    };
+    dispatch(addItem(item));
   };
   return (
     <div>

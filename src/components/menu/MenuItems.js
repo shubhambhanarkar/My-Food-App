@@ -45,7 +45,9 @@ const MenuItems = (props) => {
       <li key={item.id} style={{ listStyle: "none" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <h4>{item.name}</h4>
-          <p style={{ fontWeight: "bold", color: "#720D72", fontSize: "1.5rem" }}>
+          <p
+            style={{ fontWeight: "bold", color: "#720D72", fontSize: "1.5rem" }}
+          >
             &#8377; {item.price}
           </p>
         </div>

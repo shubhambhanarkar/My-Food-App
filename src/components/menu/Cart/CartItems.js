@@ -1,9 +1,13 @@
-// import { Button } from "reactstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "reactstrap";
+import { addItem, removeItem } from "../../store/cart-store";
 
 const CartItems = () => {
+  const cartValue = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   return (
     <ul style={{ paddingLeft: "0%" }}>
-      {/* {cartCtx.items.map((item) => {
+      {cartValue.items.map((item) => {
         return (
           <div key={item.id}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -22,13 +26,13 @@ const CartItems = () => {
               </p>
               <div>
                 <Button
-                  onClick={addItemHandler.bind(null, item)}
+                  onClick={dispatch(addItem.bind(null, item))}
                   style={{ backgroundColor: "#720D72", fontWeight: "bolder" }}
                 >
                   +
                 </Button>{" "}
                 <Button
-                  onClick={removeItemHandler.bind(null, item.id)}
+                  onClick={dispatch(removeItem.bind(null, item.id))}
                   style={{ backgroundColor: "#720D72", fontWeight: "bolder" }}
                 >
                   -
@@ -38,7 +42,7 @@ const CartItems = () => {
             <hr size="3" width="100%" />
           </div>
         );
-      })} */}
+      })}
     </ul>
   );
 };
