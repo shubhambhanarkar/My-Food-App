@@ -19,8 +19,6 @@ const CartList = (props) => {
     alert("Your Order has been placed successfully!");
   };
   const hasItems = cartValue.items.length > 0;
-  let totalPrice = 0;
-  cartValue.items.forEach((data) => (totalPrice += data.price));
   return (
     <Modal isOpen={props.onShow} centered={true} backdrop="static">
       <ModalBody>
@@ -34,7 +32,7 @@ const CartList = (props) => {
           }}
         >
           <span>Total Price</span>
-          <span>&#8377; {totalPrice}</span>
+          <span>&#8377; {cartValue.totalPrice}</span>
         </div>
         <div style={{ textAlign: "end" }}>
           <Button onClick={props.onHide} style={{ backgroundColor: "#720D72" }}>
