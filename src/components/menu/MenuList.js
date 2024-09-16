@@ -3,9 +3,11 @@ import MenuItems from "./MenuItems";
 import CartIcon from "./Cart/CartIcon";
 
 import { Card, Button, Container, Col, Row } from "reactstrap";
+import { useSelector } from "react-redux";
 
 const MenuList = (props) => {
   const history = useHistory();
+  const items = useSelector((state) => state.cart.items);
 
   const logoutHandler = () => {
     history.replace("/");
@@ -38,7 +40,9 @@ const MenuList = (props) => {
               }}
             >
               <CartIcon />
-              <span style={{ fontWeight: "bold", fontSize: "1.25rem" }}></span>
+              <span
+                style={{ fontWeight: "bold", fontSize: "1.25rem" }}
+              >{`(${items.length})`}</span>
             </Button>
           </Col>
           <Col>

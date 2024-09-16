@@ -26,13 +26,13 @@ const CartItems = () => {
               </p>
               <div>
                 <Button
-                  onClick={dispatch(addItem(item))}
+                  onClick={() => dispatch(addItem(item))}
                   style={{ backgroundColor: "#720D72", fontWeight: "bolder" }}
                 >
                   +
                 </Button>{" "}
                 <Button
-                  onClick={dispatch(removeItem(item))}
+                  onClick={() => dispatch(removeItem(item))}
                   style={{ backgroundColor: "#720D72", fontWeight: "bolder" }}
                 >
                   -
